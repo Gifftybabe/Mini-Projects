@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Form Event</title>
+  </head>
+  <body>
+    <div id="app">React has not rendered yet</div>
+    <script type="text/babel">
+      class FormEvent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            value: "",
+          };
+        }
+        handleInputChange = (event) => {
+          this.setState({
+            value: event.target.value,
+          });
+        };
+        handleFormSubmit(event) {
+          alert("A Name has been submitted: " + this.state.value);
+          event.preventDefault();
+        }
+        render() {
+          return (
+            <form onSubmit={() => this.handleFormSubmit()}>
+              <label>
+                Name:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleInputChange}
+                />
+              </label>
+              <input type="submit" value="Submit" />
+              <h2>{this.state.value}</h2>
+            </form>
+          );
+        }
+      }
+
+      ReactDOM.render(<FormEvent />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
