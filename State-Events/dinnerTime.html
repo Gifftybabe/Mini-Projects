@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <title>Meal Ticket</title>
+  </head>
+  <body>
+    <div id="app">React has not rendered yet</div>
+    <script type="text/babel">
+      // function MealTicket(props) {
+      //   var mealStyle = {
+      //     height: 480,
+      //     width: 280,
+      //     boxShadow: "2px 2px 5px 2px rgba(0, 0, 0, 0.3)",
+      //     borderRadius: "2%",
+      //     marginTop: 20,
+      //     marginLeft: 30,
+      //     textAlign: "center",
+      //     display: "inline-block",
+      //   };
+      //   return (
+      //     <div style={mealStyle}>
+      //       <MealImg img={props.img} />
+      //       <h1>Dinner Time</h1>
+      //       <p>Vote Here If You Want This</p>
+      //       <button>+1</button>
+      //       <p>Vote Here If You Don't Want This</p>
+      //       <button>-1</button>
+      //       <p>Total:</p>
+      //     </div>
+      //   );
+      // }
+
+      // function MealImg(props) {
+      //   let imgStyle = {
+      //     height: 200,
+      //     width: 200,
+      //     marginTop: 20,
+      //   };
+      //   return <img style={imgStyle} src={props.img} alt="Pasta" />;
+      // }
+
+      class MealTicket extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            votes: 0,
+          };
+        }
+        // onButtonAdd() {
+        //   this.setState((prevState) => ({
+        //     votes: prevState.votes + 1,
+        //   }));
+        // }
+        onButtonAdd() {
+          this.setState({
+            votes: this.state.votes + 1,
+          });
+        }
+        onButtonSubtract = () => {
+          this.setState((prev) => ({
+            votes: prev.votes - 1,
+          }));
+        };
+        render() {
+          var mealStyle = {
+            height: 480,
+            width: 280,
+            borderRadius: "2%",
+            marginTop: 20,
+            marginLeft: 30,
+            textAlign: "center",
+            display: "inline-block",
+            padding: 0,
+            backgroundColor: "#FFF",
+            WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+            filter: "drop-shadow(0px 0px 5px #555)",
+          };
+          var imgStyle = {
+            height: 200,
+            width: 200,
+            marginTop: 20,
+          };
+          return (
+            <div style={mealStyle}>
+              <img style={imgStyle} src={this.props.img} alt="Food image" />
+              <h1>Dinner Time</h1>
+              <p>Vote Here If You Want This</p>
+              <button onClick={() => this.onButtonAdd()}>+1</button>
+              <p>Vote Here If You Don't Want this</p>
+              <button onClick={this.onButtonSubtract}>-1</button>
+              <p>Total: {this.state.votes}</p>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <MealTicket
+            img={
+              "https://www.whitby.ca/en/live/resources/Food-Guide/images/Food-Guide-2023_Web-Banner_1200x600.jpg"
+            }
+          />
+          <MealTicket
+            img={
+              "https://img.jagranjosh.com/imported/images/E/Articles/fast_foodF.webp"
+            }
+          />
+          <MealTicket
+            img={
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScEd3gnr5ip9FqEH86SHwVuGazlKYnUhfz-w&usqp=CAU"
+            }
+          />
+        </div>,
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>
