@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+    />
+
+    <title>Profile Card</title>
+  </head>
+  <body>
+    <div id="app">React has not rendered yet</div>
+    <script type="text/babel">
+      // Container Complex Component
+      function Container() {
+        var ContainerStyle = {
+          height: 350,
+          width: 220,
+          padding: 0,
+          background: "black",
+          position: "relative",
+          color: "white",
+          fontFamily: "Lato, sans-serif",
+        };
+        return (
+          <div style={ContainerStyle}>
+            <Tag />
+            <Avatar />
+            <UserDetails />
+            <Button />
+            <Skills />
+          </div>
+        );
+      }
+
+      // Tag Component
+      function Tag() {
+        var TagStyle = {
+          background: "orange",
+          position: "absolute",
+          borderRadius: 2,
+          border: 0,
+          height: 15,
+          width: 30,
+          marginLeft: 20,
+          marginTop: 10,
+          fontSize: 10,
+          textAlign: "center",
+        };
+        return <button style={TagStyle}>PRO</button>;
+      }
+
+      // Avatar Component
+      function Avatar() {
+        var AvatarStyle = {
+          height: 100,
+          width: 100,
+          borderRadius: "50%",
+          border: "1px #B2FFB2 solid",
+          marginLeft: 60,
+          marginTop: 15,
+        };
+        return (
+          <img
+            src="https://pbs.twimg.com/profile_images/1707297751304650752/iRKUw8Tw_400x400.jpg"
+            alt="Profile Img"
+            style={AvatarStyle}
+          />
+        );
+      }
+      // UserDetails Component
+      function UserDetails() {
+        var HeaderOne = {
+          fontSize: 14,
+          margin: 0,
+
+          textAlign: "center",
+        };
+        var HeaderTwo = {
+          fontSize: 10,
+          marginTop: 4,
+
+          textAlign: "center",
+        };
+        var Paragraph = {
+          fontSize: 12,
+          marginTop: 4,
+
+          textAlign: "center",
+        };
+        return (
+          <div>
+            <h1 style={HeaderOne}>Uloka Ngozi</h1>
+            <h2 style={HeaderTwo}>NEW YORK</h2>
+            <p style={Paragraph}>
+              User Interface Designer and <br />
+              Front-End Developer
+            </p>
+          </div>
+        );
+      }
+      // Button Component
+      function Button() {
+        var ButtonOne = {
+          display: "inline-block",
+          padding: "5px 10px",
+          fontSize: 12,
+          textAlign: "center",
+          textDecoration: "none",
+          cursor: "pointer",
+
+          background: "#B2FFB2",
+          border: "none",
+          marginLeft: 40,
+        };
+        var ButtonTwo = {
+          display: "inline-block",
+          padding: "5px 10px",
+          fontSize: 12,
+          textAlign: "center",
+          textDecoration: "none",
+          cursor: "pointer",
+
+          color: "#B2FFB2",
+          border: "1px #B2FFB2 solid",
+          marginLeft: 12,
+          background: "transparent",
+        };
+        return (
+          <div>
+            <button style={ButtonOne}>Message</button>
+            <button style={ButtonTwo}>Following</button>
+          </div>
+        );
+      }
+
+      // Skills Components
+      function Skills() {
+        var OuterDiv = {
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          margin: 0,
+          fontSize: 9,
+          background: "transparent",
+        };
+
+        var SkillsH3 = {
+          width: "100%",
+          marginBottom: 2,
+          marginLeft: 20,
+          marginTop: 20,
+        };
+        var SkillsStyle = {
+          border: "1px solid #333",
+          padding: 5,
+          margin: 5,
+        };
+        return (
+          <div style={OuterDiv}>
+            <h3 style={SkillsH3}>SKILLS</h3>
+            <p style={SkillsStyle}>UI/UX</p>
+            <p style={SkillsStyle}>Node</p> <br />
+            <p style={SkillsStyle}>SEO</p>
+            <p style={SkillsStyle}>WordPress</p>
+            <p style={SkillsStyle}>APIs and Ajax</p>
+            <p style={SkillsStyle}>FrontEnd Development </p>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Container />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
