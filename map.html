@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Map/Filter Project</title>
+  </head>
+  <body>
+    <div id="app">React has not rendered yet</div>
+
+    <script type="text/babel">
+      // AnimalSpecies complex component
+      // img
+      // details
+      // sociallinks
+
+      function AnimalSpecies(props) {
+        var animalMap = props.animals.map(function (animal) {
+          var cardStyles = {
+            display: "inline-block",
+            marginLeft: 20,
+            marginTop: 20,
+            height: 300,
+            width: 200,
+            background: "#FFF",
+            borderRadius: 20,
+            padding: 0,
+            boxShadow: "2px 2px 5px 2px rgba(0, 0, 0, 0.3)",
+          };
+          return (
+            <div style={cardStyles} key={animal.id}>
+              <SpecieImage avater={animal.img} />
+              <SpecieDetails
+                species={animal.species}
+                name={animal.name}
+                age={animal.age}
+              />
+            </div>
+          );
+        });
+        return <div>{animalMap}</div>;
+      }
+
+      function SpecieImage(props) {
+        var imgStyles = {
+          height: 100,
+          width: 100,
+          marginLeft: 50,
+          marginTop: 20,
+          borderRadius: "50%",
+        };
+        return <img src={props.avater} alt="pic" style={imgStyles} />;
+      }
+
+      function SpecieDetails({ species, name, age }) {
+        var infoStyles = {
+          fontSize: 16,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          margin: 20,
+          textAlign: "center",
+        };
+        return (
+          <div style={infoStyles}>
+            <h1>{species}</h1>
+            <p>Name: {name}</p>
+            <p>Age: {age}</p>
+          </div>
+        );
+      }
+
+      var animals = [
+        {
+          id: 1,
+          species: "Cat",
+          name: "Buddy",
+          age: 4,
+          img: "https://goo.by/YxmkhF",
+        },
+        {
+          id: 2,
+          species: "Parrot",
+          name: "Kiwi",
+          age: 2,
+          img: "https://t.ly/zOSAE",
+        },
+        {
+          id: 3,
+          species: "Dog",
+          name: "Whiskers",
+          age: 5,
+          img: "https://goo.by/OfyGYJ",
+        },
+        {
+          id: 4,
+          species: "Rabbit",
+          name: "Flopsy",
+          age: 2,
+          img: "https://goo.by/HWZiSS",
+        },
+        {
+          id: 5,
+          species: "Parrot",
+          name: "Mango",
+          age: 4,
+          img: "https://t.ly/JpEUO",
+        },
+        {
+          id: 6,
+          species: "Cat",
+          name: "Luna",
+          age: 8,
+          img: "https://goo.by/uqZcPj",
+        },
+        {
+          id: 7,
+          species: "Rabbit",
+          name: "Thumper",
+          age: 9,
+          img: "https://goo.by/QIJmnt",
+        },
+        {
+          id: 8,
+          species: "Dog",
+          name: "Max",
+          age: 7,
+          img: "https://goo.by/zJAWIV",
+        },
+        {
+          id: 9,
+          species: "Cat",
+          name: "Simba",
+          age: 3,
+          img: "https://goo.by/IpsTHK",
+        },
+        {
+          id: 10,
+          species: "Dog",
+          name: "Bella",
+          age: 6,
+          img: "https://goo.by/HkTZYY",
+        },
+        {
+          id: 11,
+          species: "Parrot",
+          name: "Polly",
+          age: 7,
+          img: "https://t.ly/CHame",
+        },
+        {
+          id: 12,
+          species: "Rabbit",
+          name: "Clover",
+          age: 3,
+          img: "https://goo.by/DvsYpe",
+        },
+      ];
+
+      ReactDOM.render(
+        <AnimalSpecies animals={animals} />,
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>
